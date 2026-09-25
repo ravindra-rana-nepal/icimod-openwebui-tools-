@@ -104,7 +104,7 @@ MIT — see [LICENSE](LICENSE).
 
 ## 👤 Author
 
-- **Ravindra Rana** ([@your-github-handle](https://github.com/ravindra-rana-nepal))
+- **Ravindra Rana** ([@ravindra-rana-nepal](https://github.com/ravindra-rana-nepal))
 
 ## 🙏 Acknowledgements
 
