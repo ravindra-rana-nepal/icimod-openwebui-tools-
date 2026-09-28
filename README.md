@@ -2,8 +2,11 @@
 
 A collection of [Open WebUI](https://github.com/open-webui/open-webui) tools for
 searching and exploring [ICIMOD](https://www.icimod.org/) resources (the Regional
-Database System and the ICIMOD Knowledge Library) and curated
-[Zenodo](https://zenodo.org/) research communities.
+Database System and the ICIMOD Knowledge Library), curated
+[Zenodo](https://zenodo.org/) research communities, and the
+[JARDET](https://zenodo.org/communities/jardet/) journal community.
+
+---
 
 ## 🧰 Included Tools
 
@@ -14,6 +17,9 @@ Database System and the ICIMOD Knowledge Library) and curated
 | **Zenodo — ENGAGE Community** | `zenodo_engage.py` | Search the ENGAGE (Society for Risk Awareness and Resilience) Zenodo community. |
 | **Zenodo — Biodiversity Literature Repository** | `zenodo_biosyslit.py` | Search the Biodiversity Literature Repository (biosyslit) Zenodo community, including taxonomic keywords. |
 | **Zenodo — Climate and Cryosphere (CliC)** | `zenodo_clic.py` | Search the Climate and Cryosphere (CliC) Zenodo community. |
+| **Zenodo — JARDET Community** | `zenodo_jardet.py` | Search the Journal of Agricultural Research, Development, Extension and Technology (JARDET) Zenodo community. |
+
+---
 
 ## ✨ Features
 
@@ -49,6 +55,16 @@ Database System and the ICIMOD Knowledge Library) and curated
 - ⚙️ Configurable via **Valves** (`timeout`, `default_size`, `max_size`)
 - 🕒 Sortable by `newest`, `oldest`, `bestmatch`, or `mostviewed`
 
+### Zenodo — JARDET Community
+- 🌾 Search the JARDET (Journal of Agricultural Research, Development, Extension and Technology) Zenodo community
+- 📄 List records with pagination, sortable by `newest` or `bestmatch`
+- 🔎 Keyword search across titles, abstracts, and authors
+- 📋 Fetch full metadata for a specific record by Zenodo ID (files, license, journal info)
+- 🕒 Quick access to the most recently published JARDET articles
+- ⚙️ Configurable via **Valves** (`community_slug`, `timeout`)
+
+---
+
 ## 📋 Requirements
 
 - Open WebUI (recent version with Tools support)
@@ -57,6 +73,8 @@ Database System and the ICIMOD Knowledge Library) and curated
 
 No API keys are required — all services are public.
 
+---
+
 ## 🚀 Installation
 
 ### Option A — Import from GitHub (recommended)
@@ -64,8 +82,11 @@ No API keys are required — all services are public.
 1. Open Open WebUI → **Workspace** → **Tools** → **+ Create New Tool**
 2. Copy the raw contents of the tool file, e.g.:
 
-https://raw.githubusercontent.com/<your-user>/icimod-openwebui-tools/main/icimod_rds_explorer.py
-https://raw.githubusercontent.com/<your-user>/icimod-openwebui-tools/main/zenodo_engage.py
+   ```
+   https://raw.githubusercontent.com/<your-user>/icimod-openwebui-tools/main/icimod_rds_explorer.py
+   https://raw.githubusercontent.com/<your-user>/icimod-openwebui-tools/main/zenodo_engage.py
+   https://raw.githubusercontent.com/<your-user>/icimod-openwebui-tools/main/zenodo_jardet.py
+   ```
 
 3. Paste into the editor, give it a **Name** and **Description**, then **Save**.
 4. Repeat for each tool file.
@@ -83,6 +104,8 @@ After saving, attach them to a model:
 
 > ⚠️ Tool calling works best with capable models (GPT-4o, Claude 3.5 Sonnet,
 > Llama 3.1 70B+, Qwen 2.5 32B+). Small models may not call tools reliably.
+
+---
 
 ## ⚙️ Configuration
 
@@ -110,6 +133,15 @@ same three settings, scoped per community:
 Each Zenodo tool also exposes `query`, `page`, `size`, and `sort` arguments on
 its search function, so you can page through results and control ordering.
 
+**Zenodo — JARDET Community** exposes its own `Valves` panel:
+
+| Valve | Default | Description |
+|---|---|---|
+| `community_slug` | `jardet` | Zenodo community slug for JARDET |
+| `timeout` | `30` | HTTP timeout in seconds for Zenodo API calls |
+
+---
+
 ## 💬 Usage Examples
 
 Once enabled, just ask your model naturally:
@@ -132,6 +164,14 @@ Once enabled, just ask your model naturally:
 - *"Show me the newest 10 CliC records, and highlight anything about sea ice."*
 - *"Search CliC for 'permafrost' and give me page 2."*
 
+**Zenodo — JARDET**
+- *"List the latest 10 articles from JARDET."*
+- *"Search JARDET for papers about rice cultivation."*
+- *"Show me the details of JARDET record 8296340."*
+- *"What are the most recent articles published in JARDET?"*
+
+---
+
 ## 🔗 API References
 
 - ICIMOD RDS GeoAPI: `https://rds.icimod.org/geoapi/public`
@@ -140,6 +180,9 @@ Once enabled, just ask your model naturally:
   - ENGAGE: `https://zenodo.org/api/communities/engageh2020/records`
   - Biodiversity Literature Repository: `https://zenodo.org/api/communities/biosyslit/records`
   - Climate and Cryosphere (CliC): `https://zenodo.org/api/communities/climate-cryosphere/records`
+  - JARDET: `https://zenodo.org/api/communities/jardet/records`
+
+---
 
 ## 🤝 Contributing
 
@@ -150,17 +193,23 @@ Issues and pull requests are welcome. If you add a new tool:
 3. Update the table in this README.
 4. Add a short usage example.
 
+---
+
 ## 📄 License
 
 MIT — see [LICENSE](LICENSE).
+
+---
 
 ## 👤 Author
 
 - **Ravindra Rana** ([@ravindra-rana-nepal](https://github.com/ravindra-rana-nepal))
 
+---
+
 ## 🙏 Acknowledgements
 
 - [ICIMOD](https://www.icimod.org/) for the public RDS and Library APIs
 - [Zenodo](https://zenodo.org/) for the open Communities API
-- The ENGAGE, biosyslit, and CliC communities for maintaining open research records
+- The ENGAGE, biosyslit, CliC, and JARDET communities for maintaining open research records
 - [Open WebUI](https://github.com/open-webui/open-webui) for the tools framework
